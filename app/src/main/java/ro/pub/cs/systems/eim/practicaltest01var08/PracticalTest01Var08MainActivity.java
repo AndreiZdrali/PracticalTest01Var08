@@ -1,6 +1,10 @@
 package ro.pub.cs.systems.eim.practicaltest01var08;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +13,24 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class PracticalTest01Var08MainActivity extends AppCompatActivity {
+    private Button playButton;
+    private EditText riddleText;
+    private EditText answerText;
+
+    private PlayButtonClickListener playButtonClickListener = new PlayButtonClickListener();
+    private class PlayButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            var riddle = riddleText.getText().toString();
+            var answer = riddleText.getText().toString();
+
+            if (!riddle.isEmpty() && !answer.isEmpty()) {
+                Toast.makeText(getApplicationContext(), "NU SUNT GOALE", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +42,11 @@ public class PracticalTest01Var08MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        playButton = findViewById(R.id.play_button);
+        riddleText = findViewById(R.id.riddle_text);
+        answerText = findViewById(R.id.answer_text);
+
+        playButton.setOnClickListener(playButtonClickListener);
     }
 }

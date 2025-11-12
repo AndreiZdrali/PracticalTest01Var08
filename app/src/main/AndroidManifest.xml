@@ -21,6 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PracticalTest01Var08PlayActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="ro.pub.cs.eim.practicaltest01var08.intent.action.PracticalTest01Varo8PlayActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

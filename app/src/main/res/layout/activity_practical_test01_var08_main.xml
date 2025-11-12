@@ -20,6 +20,7 @@
             android:inputType="text"
             android:layout_width="match_parent"
             android:layout_marginTop="50dp"
+            android:saveEnabled="true"
             android:hint="Riddle"/>
 
         <EditText
@@ -29,6 +30,7 @@
             android:inputType="text"
             android:layout_width="match_parent"
             android:layout_marginTop="25dp"
+            android:saveEnabled="true"
             android:hint="Answer"/>
 
         <Button
