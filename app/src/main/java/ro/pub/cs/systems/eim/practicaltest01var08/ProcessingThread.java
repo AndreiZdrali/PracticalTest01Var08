@@ -24,7 +24,7 @@ public class ProcessingThread extends Thread {
     public void run() {
         while (isRunning) {
             sendMessage();
-            sleep10s();
+            sleep5s();
         }
     }
 
@@ -43,8 +43,8 @@ public class ProcessingThread extends Thread {
         context.sendBroadcast(intent);
     }
 
-    private void sleep10s() {
-        try { Thread.sleep(10000); }
+    private void sleep5s() {
+        try { Thread.sleep(5000); }
         catch (InterruptedException e) { e.printStackTrace(); }
     }
 
