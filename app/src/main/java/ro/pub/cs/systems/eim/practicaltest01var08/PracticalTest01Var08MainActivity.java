@@ -1,6 +1,8 @@
 package ro.pub.cs.systems.eim.practicaltest01var08;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,20 +58,32 @@ public class PracticalTest01Var08MainActivity extends AppCompatActivity {
 
         playButton.setOnClickListener(playButtonClickListener);
 
-        Toast.makeText(this, lastResultText.getText().toString(), Toast.LENGTH_LONG).show();
+        SharedPreferences prefs = getSharedPreferences("Share", Context.MODE_PRIVATE );
+        var won = prefs.getInt("VICTORY", 0);
+        if (won == 1) {
+            Toast.makeText(this, "Victory", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Fail", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == 108) {
+            SharedPreferences prefs = getSharedPreferences("Share", Context.MODE_PRIVATE );
+            SharedPreferences.Editor editor = prefs.edit();
             if (resultCode == RESULT_OK) {
                 Toast.makeText(this, "Victory", Toast.LENGTH_LONG).show();
-                lastResultText.setText("Victory");
+                editor.putInt("VICTORY", 1);
+
             } else {
                 Toast.makeText(this, "Fail", Toast.LENGTH_LONG).show();
-                lastResultText.setText("Fail");
+                editor.putInt("VICTORY", 0);
+
             }
+            editor.commit();
         }
     }
 }
