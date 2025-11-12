@@ -40,6 +40,16 @@
             android:layout_gravity="center"
             android:text="Play" />
 
+        <TextView
+            android:id="@+id/lastresult_text"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_marginTop="50dp"
+            android:saveEnabled="true"
+            android:visibility="invisible"/>
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
