@@ -27,7 +27,7 @@ public class PracticalTest01Var08PlayActivity extends AppCompatActivity {
         public void onClick(View view) {
             if (view.getId() == R.id.check_button) {
                 var givenAnswer = answerText.getText().toString();
-                if (givenAnswer.toLowerCase().strip() == correctAnswer) {
+                if (givenAnswer.toLowerCase().strip().equals(correctAnswer.toLowerCase().strip())) {
                     setResult(RESULT_OK, null);
                 } else {
                     setResult(RESULT_CANCELED, null);

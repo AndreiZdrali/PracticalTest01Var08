@@ -18,15 +18,14 @@ public class PracticalTest01Var08MainActivity extends AppCompatActivity {
     private Button playButton;
     private EditText riddleText;
     private EditText answerText;
-    private TextView lastResultText;
-    private int lastResultInt = -10;
+    private EditText lastResultText;
 
     private PlayButtonClickListener playButtonClickListener = new PlayButtonClickListener();
     private class PlayButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             var riddle = riddleText.getText().toString();
-            var answer = riddleText.getText().toString();
+            var answer = answerText.getText().toString();
 
             if (!riddle.isEmpty() && !answer.isEmpty()) {
                 Intent intent = new Intent(getApplicationContext(), PracticalTest01Var08PlayActivity.class);
@@ -57,15 +56,7 @@ public class PracticalTest01Var08MainActivity extends AppCompatActivity {
 
         playButton.setOnClickListener(playButtonClickListener);
 
-        lastResultInt = Integer.parseInt(lastResultText.getText().toString());
-
-        if (lastResultInt != -10) {
-            if (lastResultInt == RESULT_OK) {
-                Toast.makeText(this, "Victory", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this, "Fail", Toast.LENGTH_LONG).show();
-            }
-        }
+        Toast.makeText(this, lastResultText.getText().toString(), Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -74,10 +65,11 @@ public class PracticalTest01Var08MainActivity extends AppCompatActivity {
         if (requestCode == 108) {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(this, "Victory", Toast.LENGTH_LONG).show();
+                lastResultText.setText("Victory");
             } else {
                 Toast.makeText(this, "Fail", Toast.LENGTH_LONG).show();
+                lastResultText.setText("Fail");
             }
         }
-        lastResultText.setText(resultCode);
     }
 }
